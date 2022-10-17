@@ -13,7 +13,7 @@ player2 = Player.new('player2')
 game = Game.new(player1)
 i = 0
 ## loop questions and alternate between players || stop loop is lives = 0 
-while (player1.see_Lives.to_i > 0  ) do
+while (!game.is_winner ) do
   puts game.player?
   puts "question #{i}"
   i = i + 1
@@ -23,8 +23,12 @@ while (player1.see_Lives.to_i > 0  ) do
 p "your answer #{answer} "
 
 player1.minus_lives
+ 
+if(player1.see_Lives.to_i == 0)
+  game.set_winner(player2)
+end
 
-  puts " player 1 lives:#{player1.see_Lives}/3" 
+puts " player 1 lives:#{player1.see_Lives}/3" 
 puts " player 2 lives:#{player2.see_Lives}/3" 
 
 end
@@ -36,3 +40,5 @@ end
 
 
 start
+
+## || player2.see_Lives.to_i > 0 
