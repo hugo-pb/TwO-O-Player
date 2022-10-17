@@ -22,9 +22,15 @@ while (!game.is_winner ) do
 
   print "> "
  answer = $stdin.gets.chomp
-p "your answer #{answer} and #{q.get_ans} "
 
-player1.minus_lives
+##### is answer correct? ####
+if answer.to_i == q.get_ans
+  puts "awesome thats correct!!"
+else
+  player1.minus_lives
+end 
+
+
  
 
 ##### is there a winner? ####
@@ -34,13 +40,13 @@ end
 if(player2.see_Lives.to_i == 0)
   game.set_winner(player1)
 end
+
 ##### scores || lives left ####
 puts " player 1 lives:#{player1.see_Lives}/3" 
 puts " player 2 lives:#{player2.see_Lives}/3" 
 
 end
-p 'end game player 2 wins'
-
+p "end game, #{game.is_winner} wins!"
 
 end
 
