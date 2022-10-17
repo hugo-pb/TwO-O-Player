@@ -1,6 +1,6 @@
 require './players'
 require './game'
-
+require './questions'
 
 def start 
   puts "Welcome to TwO-O-Player game"
@@ -11,29 +11,36 @@ player2 = Player.new('player2')
 
 
 game = Game.new(player1)
-i = 0
+
 ## loop questions and alternate between players || stop loop is lives = 0 
 while (!game.is_winner ) do
-  puts game.player?
-  puts "question #{i}"
-  i = i + 1
   
+  puts "its your turn #{game.player?}"
+
+  q = Question.new
+  puts "#{q.val1} + #{q.val2} ?"
+
   print "> "
  answer = $stdin.gets.chomp
-p "your answer #{answer} "
+p "your answer #{answer} and #{q.get_ans} "
 
 player1.minus_lives
  
+
+##### is there a winner? ####
 if(player1.see_Lives.to_i == 0)
   game.set_winner(player2)
 end
-
+if(player2.see_Lives.to_i == 0)
+  game.set_winner(player1)
+end
+##### scores || lives left ####
 puts " player 1 lives:#{player1.see_Lives}/3" 
 puts " player 2 lives:#{player2.see_Lives}/3" 
 
 end
 p 'end game player 2 wins'
-## check if answer is correct - lives if not
+
 
 end
 
