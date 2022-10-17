@@ -15,7 +15,7 @@ attr_accessor :winner
    self.current_player    
   end
 
-def set_winner(n_player)
+  def set_winner(n_player)
    self.winner = n_player   
   end
 
